@@ -1,9 +1,10 @@
 require('../css/common.scss');
-var imgName = '1px';
-require('../images/'+imgName+'.jpg');
-require('../images/'+imgName+'.png');
+// var imgName = '1px';
+// require('../images/'+imgName+'.jpg');
+// require('../images/'+imgName+'.png');
+// import Vue from 'vue'
 
-class App {
+class Apps {
 	constructor() {
 		this.wrp = $('.wrapper');
 		switch (this.wrp.attr('data-page')) {
@@ -16,5 +17,5 @@ class App {
 }
 
 $(()=>{
-    var app = new App();
+    var appjs = new Apps();
 });
