@@ -1,0 +1,20 @@
+@import "base.scss";
+@import "reset.scss";
+$color:#ccc;
+.loading{
+    @include flt;
+    z-index: 9999;
+    background-color: #012d92;
+    span{
+        @include am(320px,34px);
+        @include font(15px,34px,#fff);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+}
+.wrapper{
+    @include r;
+}
+
+@import "mobile.scss";
