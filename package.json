@@ -19,6 +19,9 @@
     "url": "https://github.com/ml-andy/webpack_pratice/issues"
   },
   "homepage": "https://github.com/ml-andy/webpack_pratice#readme",
+  "dependencies": {
+    "vue": "^2.1.0"
+  },
   "devDependencies": {
     "autoprefixer": "^6.6.1",
     "babel-core": "^6.21.0",
