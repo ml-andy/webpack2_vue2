@@ -15,14 +15,11 @@ html
         meta(property="og:type" content="website")
         //- meta(property="og:image" content="img/fbshare.jpg")
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js')
         - var version = new Date().toUTCString().replace(',','').split(' ').join('_');
         link(rel="stylesheet" href="css/common.css?"+version)
     body
-        .loading
-            span Loading...
-        
-        .wrapper(data-page="index")
-            #app
+        #app
 
         //- there's js
         //- script(src='//connect.facebook.net/zh_TW/all.js')

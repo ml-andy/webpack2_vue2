@@ -1,8 +1,8 @@
 ﻿var Stage = require('./modules/Stage.js');
 var Header = require('./modules/Header.js');
 require('../index.pug');
-import Vue from 'vue'
-import app from '../components/App.vue';
+// import Vue from 'vue'
+
 
 
 class Index extends Stage {
@@ -15,10 +15,6 @@ class Index extends Stage {
         });
         $(window).on('resize',()=>{
             this.windowResize();
-        });
-        var test = new Vue({
-            el: '#app',
-            render:h=>h(app),
         });
     }
     window_load(){

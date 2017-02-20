@@ -23,16 +23,28 @@ module.exports = {
 			{
 				test: /\.vue$/,
 				loader: 'vue-loader',
+				include: __dirname + '\\src',
 				options: {
 					loaders: {
-					}
-					// other vue-loader options go here
-				}
+						pug:'html-loader!pug-html-loader?pretty&exports=false',
+						scss: extractStyles.extract({
+							use: [
+								{ loader: "css-loader?sourceMap&url=false" },
+								{ loader: "postcss-loader?sourceMap" },
+								{ loader: "sass-loader?sourceMap" }
+							]
+						}),
+						es6:'babel-loader?presets=es2015'
+					},
+					postcss: [
+						autoprefixer({browsers:['> 1%', 'last 2 versions', 'Firefox ESR']}),
+					],
+				},
 			},
 			{
 				test: /\.pug$/,
 				loader: extractHtml.extract({
-					loader: ['html-loader', 'pug-html-loader?pretty&exports=false']
+					use: ['html-loader', 'pug-html-loader?pretty&exports=false']
 				})
 			},
 			{
@@ -42,21 +54,14 @@ module.exports = {
 					presets: ['es2015']
 				},
 				include: __dirname + '\\src',
-				// exclude: /node_modules/
 			},
 			{
 				test: /\.scss$/,
 				loader: extractStyles.extract({
-					loader: [
-						{
-							loader: "css-loader?sourceMap&url=false"
-						},
-						{
-							loader: "postcss-loader?sourceMap"
-						},
-						{
-							loader: "sass-loader?sourceMap"
-						}
+					use: [
+						{ loader: "css-loader?sourceMap&url=false" },
+						{ loader: "postcss-loader?sourceMap" },
+						{ loader: "sass-loader?sourceMap" }
 					]
 				})
 			},
@@ -88,7 +93,7 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.LoaderOptionsPlugin({
-			minimize: false,
+			minimize: true,
 			debug: true,
 			options: {
 				postcss: [
@@ -104,7 +109,9 @@ module.exports = {
 		}),
 		extractStyles,
 		extractHtml,
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		//minimize js
+		// new BabiliPlugin()
 	],
 	devServer: {
 		contentBase: __dirname + '/src',
